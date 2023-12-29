@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>* {
+      box-sizing: border-box;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background: #333;
+    }
+    
+    .container {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      width: 300px;
+      border: 6px solid #fff;
+      border-radius: 50%;
+    }
+    
+    .hour-hand {
+      position: absolute;
+      right: 58px;
+      width: 100px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 3px;
+      transform: rotate(0deg);
+      transform-origin: 10% 50%;
+    }
+    
+    .min-hand {
+      position: absolute;
+      width: 150px;
+      right: 8px;
+      height: 4px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 3px;
+      transform: rotate(0deg);
+      transform-origin: 10% 50%; /* Set the origin to the bottom center of the hour hand */
+    }
+    
+    .sec-hand {
+      position: absolute;
+      width: 120px;
+      right: 39px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 3px;
+      transform: rotate(0deg);
+      transform-origin: 12% 50%; /* Set the origin to the bottom center of the hour hand */
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hour-hand"></div>
+      <div class="min-hand"></div>
+      <!-- <div class="sec-hand"></div> -->
+    </div>
+    <script src="script.js"></script>
+    <script>
+      'use strict';
+      const hourHand = document.querySelector('.hour-hand');
+      const minHand = document.querySelector('.min-hand');
+      const secHand = document.querySelector('.sec-hand');
+
+      function callTime() {
+        let CurrDate = new Date();
+        const hours = CurrDate.getHours();
+        const min = CurrDate.getMinutes();
+        const sec = CurrDate.getSeconds();
+
+        // let secAngle = ((sec *6) - 90);
+        let minAngle = min * 6 - 90;
+        let hourAngle = (hours % 12) * 30 - 90;
+
+        minHand.style.transform = `rotate(${minAngle}deg)`;
+        hourHand.style.transform = `rotate(${hourAngle}deg)`;
+        // secHand.style.transform = `rotate(${secAngle}deg)`;
+      }
+
+      setInterval(callTime, 1000);
+    </script>
+  </body>
+</html>
