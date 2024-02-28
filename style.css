@@ -39,7 +39,7 @@ body {
   width: 150px;
   right: 8px;
   height: 4px;
-  background-color: rgb(18, 181, 218);
+  background-color: rgb(255, 255, 255);
   border-radius: 3px;
   transform: rotate(0deg);
   transform-origin: 10% 50%; /* Set the origin to the bottom center of the hour hand */
